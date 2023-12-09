@@ -6,10 +6,10 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/editproduct/[productId]/page": [
+    "/addtocart/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/editproduct/[productId]/page.js"
+      "static/chunks/app/addtocart/page.js"
     ],
     "/page": [
       "static/chunks/webpack.js",
@@ -22,10 +22,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/productdetail/[productId]/page.js"
     ],
-    "/addproduct/page": [
+    "/editproduct/[productId]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/addproduct/page.js"
+      "static/chunks/app/editproduct/[productId]/page.js"
     ],
     "/not-found": [
       "static/chunks/webpack.js",

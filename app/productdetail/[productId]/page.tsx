@@ -1,8 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
-import { Container, Paper, Typography, Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Container, Paper, Typography, Button, TextField } from "@mui/material";
 import { getProductById } from "@/features/products/actions";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { addToCart } from "@/features/products/productsSlice";
+import { products } from "@/types/productsTypes";
 
 type Props = {
   params: {
@@ -14,10 +16,27 @@ const ProductDetail = ({ params }: Props) => {
   const { productId } = params;
   const dispatch = useAppDispatch();
   const { product } = useAppSelector((state) => state.productsState);
+  const [productQuantity, setProductQuantity] = useState<products>();
 
   useEffect(() => {
     if (productId) dispatch(getProductById(productId));
   }, [productId]);
+
+  useEffect(() => {
+    if (product) {
+      setProductQuantity({
+        ...product,
+      });
+    }
+  }, [product]);
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setProductQuantity((prevProduct) => ({
+      ...prevProduct,
+      [name]: value,
+    }));
+  };
 
   return (
     <Container
@@ -40,10 +59,20 @@ const ProductDetail = ({ params }: Props) => {
         >
           {product?.price}
         </Typography>
+        <TextField
+          label="quantity"
+          variant="outlined"
+          fullWidth
+          type="number"
+          margin="normal"
+          name="quantity"
+          value={productQuantity?.quantity || ""}
+          onChange={handleChange}
+        />
         <Button
           variant="contained"
           color="primary"
-          //   onClick={() => onAddToCart(product)}
+          onClick={() => dispatch(addToCart(productQuantity))}
         >
           Add to Cart
         </Button>

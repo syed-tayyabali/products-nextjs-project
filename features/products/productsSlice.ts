@@ -6,18 +6,30 @@ export type state = {
   products: products[];
   loading: boolean;
   product: products | null;
+  cart: products[];
 };
 
 const initialState: state = {
   products: [],
   loading: false,
   product: null,
+  cart: [],
 };
 
 const productsSlice = createSlice({
   name: "fortniteShop",
   initialState,
-  reducers: {},
+  reducers: {
+    addToCart: (state, { payload }) => {
+      const isExist = state.cart.some((item) => item._id === payload._id);
+      if (!isExist) {
+        state.cart.push(payload);
+      }
+    },
+    handleRemoveFromCart: (state, { payload }) => {
+      state.cart = state.cart.filter((item) => item._id !== payload.id);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllProducts.pending, (state: any) => {
@@ -45,4 +57,5 @@ const productsSlice = createSlice({
   },
 });
 
+export const { addToCart, handleRemoveFromCart } = productsSlice.actions;
 export default productsSlice.reducer;

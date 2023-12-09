@@ -138,6 +138,12 @@ export const MuiAppBar = () => {
           >
             ADD PRODUCT
           </Button>
+          <Button
+            sx={{ my: 2, color: "white", display: "block" }}
+            onClick={(e) => router.push(`/addtocart`)}
+          >
+            VIEW CART
+          </Button>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="">

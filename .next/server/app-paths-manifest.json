@@ -1,8 +1,7 @@
 {
   "/not-found": "app/not-found.js",
-  "/editproduct/[productId]/page": "app/editproduct/[productId]/page.js",
+  "/addtocart/page": "app/addtocart/page.js",
   "/page": "app/page.js",
-  "/addproduct/page": "app/addproduct/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/productdetail/[productId]/page": "app/productdetail/[productId]/page.js"
+  "/productdetail/[productId]/page": "app/productdetail/[productId]/page.js",
+  "/editproduct/[productId]/page": "app/editproduct/[productId]/page.js"
 }
